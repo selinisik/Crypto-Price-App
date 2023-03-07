@@ -38,7 +38,7 @@ function App() {
             <Coin
               name={coin?.name}
               icon={coin?.icon}
-              price={`${coin?.price}$`}
+              price={`$${coin?.price.toString().slice(0, 7)}`}
               symbol={coin?.symbol}
             />
           );
