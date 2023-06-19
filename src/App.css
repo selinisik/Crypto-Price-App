@@ -5,3 +5,31 @@
 .box-shadow-coin{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+.bg-background {
+  background-image: url('../public/background.jpg');
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  width: 12px;  
+}
+
+
+.no-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.4); 
+}
+
+
+.no-scrollbar::-webkit-scrollbar-thumb {
+  background-color: white;  
+  border-radius: 20px;  
+  border: 3px solid transparent;  
+  background-clip: content-box;
+}
+
+
+
+.no-scrollbar {
+  scrollbar-width: thin;  
+  scrollbar-color: rgba(255, 255, 255, 0.4) white; 
+}

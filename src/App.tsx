@@ -7,6 +7,7 @@ import { Coin } from "./components/Coin";
 function App() {
   const [listOfCoins, setListOfCoins] = useState<CoinType[]>([]);
   const [searchWord, setSearchWord] = useState("");
+
   useEffect(() => {
     Axios.get(
       "https://api.coinstats.app/public/v1/coins?skip=0&currency=USD"
@@ -14,33 +15,34 @@ function App() {
       setListOfCoins(response.data.coins);
     });
   }, []);
-  console.log(listOfCoins);
 
   const filteredCoins = listOfCoins.filter((coin: CoinType) => {
     return coin.name.toLowerCase().includes(searchWord.toLowerCase());
   });
 
   return (
-    <div className="font-sans h-auto w-screen ">
-      <div className="flex justify-center items-center px-4 md:px-0 w-full h-[200px] bg-amber-400">
+    <div className="font-sans h-screen w-screen bg-background bg-cover">
+      <div className="flex justify-center items-center px-4 md:px-0 w-full h-[200px] ">
         <input
           onChange={(event) => {
             setSearchWord(event.target.value);
           }}
           type="text"
           placeholder="Bitcoin..."
-          className="w-full sm:w-1/2 h-[50px] b-none rounded bg-white text-xl font-bold text-center mt-2.5 text-black "
+          className="w-full sm:w-1/2 h-[50px] rounded placeholder-gray-300 placeholder-opacity-60 bg-white/40 text-xl font-bold text-center mt-2.5 text-white outline-none focus:border-2 focus:border-white"
         ></input>
       </div>
-      <div className="px-4 md:px-0 grid-cols-1 justify-center grid sm:grid-cols-2 lg:grid-cols-3 justify-items-center items-center mt-5  ">
+      <div className="flex pb-12 overflow-x-scroll no-scrollbar mt-5 space-x-4 px-4 md:px-0">
         {filteredCoins.map((coin) => {
           return (
-            <Coin
-              name={coin?.name}
-              icon={coin?.icon}
-              price={`$${coin?.price.toString().slice(0, 7)}`}
-              symbol={coin?.symbol}
-            />
+            <div className="flex-none">
+              <Coin
+                name={coin?.name}
+                icon={coin?.icon}
+                price={`$${coin?.price.toString().slice(0, 7)}`}
+                symbol={coin?.symbol}
+              />
+            </div>
           );
         })}
       </div>

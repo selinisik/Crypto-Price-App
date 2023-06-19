@@ -3,18 +3,19 @@ import { Props } from "./Coin.types";
 
 export const Coin: FunctionComponent<Props> = (Props) => {
   const { name, icon, price, symbol } = Props;
+
   return (
-    <div className="bg-white hover:-translate-y-1 hover:scale-105 hover:bg-gray-200 text-black px-1 box-shadow-coin flex flex-col justify-between pb-4 w-full sm:w-[290px] md:w-[350px] lg:w-[300px] xl:w-[400px] h-[300px] m-5 text-center rounded-xl ">
-      <h1 className="text-3xl  pb-3 sm:pb-4 pt-3 ">{name}</h1>
-      <img
-        src={icon}
-        alt={name}
-        height="100"
-        width="100"
-        className="mx-auto mb-3 sm:mb-4 w-[100px] h-[100px]"
-      ></img>
-      <h3 className="text-xl sm:text-2xl pb-3 sm:pb-4">Price: {price}</h3>
-      <h3 className="text-xl sm:text-2xl"> Symbol: {symbol}</h3>
+    <div className="rounded-xl shadow-md transform transition-transform duration-500 hover:scale-105 hover:shadow-xl p-6 flex flex-col items-center justify-between space-y-4 text-center w-full sm:w-72 md:w-88 lg:w-96 h-80 m-5 bg-white/20 backdrop-blur-lg">
+      <h1 className="text-3xl text-white ">{name}</h1>
+      <div className="w-24 h-24 relative">
+        <img
+          src={icon}
+          alt={name}
+          className="w-full h-full rounded-full shadow-lg object-cover"
+        />
+      </div>
+      <h3 className="text-xl text-white">Price: {price}</h3>
+      <h3 className="text-xl text-white">Symbol: {symbol}</h3>
     </div>
   );
 };
